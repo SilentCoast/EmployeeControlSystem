@@ -1,6 +1,6 @@
 ﻿namespace ClassLibraryEmloyees
 {
-    class Controller : Person, ITitlable
+    public class Controller : Person, ITitlable
     {
         public string getTitle()
         {

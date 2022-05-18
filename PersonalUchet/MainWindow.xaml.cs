@@ -24,6 +24,7 @@ namespace PersonalUchet
         public MainWindow()
         {
             InitializeComponent();
+            Person p = new Rabochiy();
             
         }
     }

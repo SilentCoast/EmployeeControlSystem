@@ -8,13 +8,19 @@ namespace ClassLibraryEmloyees
 {
     public class Person
     {
-        private string sex;
-        private string birthDate;
-        private string fIO;
+        private string FIO { get; set; }
+        private string Sex { get; set; }
+        private string BirthDate { get; set; }
 
-        protected string FIO { get => fIO; set => fIO = value; }
-        protected string Sex { get => sex; set => sex = value; }
-        protected string BirthDate { get => birthDate; set => birthDate = value; }
+        public void setFIO(string newfio) 
+        {
+            try
+            {
+                FIO = newfio;
+            }
+            catch (FormatException) { }
+        }
+
     }
 
    

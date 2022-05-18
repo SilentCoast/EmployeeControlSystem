@@ -1,6 +1,6 @@
 ﻿namespace ClassLibraryEmloyees
 {
-    class HeadOfDivision : Person, ITitlable
+    public class HeadOfDivision : Person, ITitlable
     {
         private string nameofDivision;
         private string NameofDivision { get => nameofDivision; set => nameofDivision = value; }

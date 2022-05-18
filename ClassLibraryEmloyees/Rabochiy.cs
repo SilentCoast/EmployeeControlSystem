@@ -1,6 +1,6 @@
 ﻿namespace ClassLibraryEmloyees
 {
-    class Rabochiy : Person, ITitlable
+    public class Rabochiy : Person, ITitlable
     {
         private string fIOofHeadofDivision;
 
