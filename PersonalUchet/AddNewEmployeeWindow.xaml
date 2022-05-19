@@ -1,0 +1,42 @@
+﻿<Window x:Class="PersonalUchet.AddNewEmployeeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PersonalUchet"
+        mc:Ignorable="d"
+        Title="AddNewEmployeeWindow" Height="450" Width="800" FontSize="20">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*" ></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0">ФИО</Label>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1">Пол</Label>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2">Дата рождения</Label>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3">Должность</Label>
+        <Label Name="lblUnicProperty" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4"></Label>
+        <TextBox x:Name="txtFIO" Grid.Column="2" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" >
+
+            <RadioButton x:Name="radioButtonMan" GroupName="sex"  Content="Мужчина" ></RadioButton>
+            <RadioButton x:Name="radioButtonWoman"  GroupName="sex" >Женщина</RadioButton>
+        </StackPanel>
+        <TextBox x:Name="txtBirthDate" Grid.Column="2" Grid.Row="2" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <ComboBox Name="comboBoxPositionInCompany" Grid.Column="3" Grid.Row="3" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="comboBoxPositionInCompany_SelectionChanged">
+            
+        </ComboBox>
+        <TextBox Name="txtUnicProperty" Grid.Column="2" Grid.Row="4" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <Button x:Name="btnAddEmployee" Grid.Column="0"  Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="btnAddEmployee_Click"  >Добавить сотрудника</Button>
+    </Grid>
+</Window>

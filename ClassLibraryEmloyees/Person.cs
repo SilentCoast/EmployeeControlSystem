@@ -1,27 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClassLibraryEmloyees
+namespace ClassLibraryEmployees
 {
-    public class Person
+    public class Person:INotifyPropertyChanged
     {
-        private string FIO { get; set; }
-        private string Sex { get; set; }
-        private string BirthDate { get; set; }
+        private string fIO;
+        private string sex;
+        private string birthDate;
 
-        public void setFIO(string newfio) 
+        public string FIO
         {
-            try
+            get => fIO; set
             {
-                FIO = newfio;
+                fIO = value;
+                OnPropertyChanged("FIO");
             }
-            catch (FormatException) { }
+        }
+        public string Sex
+        {
+            get => sex; set
+            {
+                sex = value;
+                OnPropertyChanged("Sex");
+            }
+        }
+        public string BirthDate
+        {
+            get => birthDate; set
+            {
+                birthDate = value;
+                OnPropertyChanged("BirthDate");
+            }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+        }
     }
 
-   
+
 }

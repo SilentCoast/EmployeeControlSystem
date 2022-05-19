@@ -55,10 +55,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AddNewEmployeeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AddNewEmployeeWindow.xaml.cs">
+      <DependentUpon>AddNewEmployeeWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -95,9 +102,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryEmloyees\ClassLibraryEmloyees.csproj">
+    <ProjectReference Include="..\ClassLibraryEmloyees\ClassLibraryEmployees.csproj">
       <Project>{c52008f3-5a13-404c-bc02-023d037b28ce}</Project>
-      <Name>ClassLibraryEmloyees</Name>
+      <Name>ClassLibraryEmployees</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

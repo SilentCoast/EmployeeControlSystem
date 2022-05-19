@@ -1,4 +1,4 @@
-﻿namespace ClassLibraryEmloyees
+﻿namespace ClassLibraryEmployees
 {
     public class Director : Person, ITitlable
     {

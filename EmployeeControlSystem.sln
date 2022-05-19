@@ -5,7 +5,7 @@ VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalUchet", "PersonalUchet\PersonalUchet.csproj", "{C46C2C14-2D9F-49F6-9340-8B44D987B718}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryEmloyees", "ClassLibraryEmloyees\ClassLibraryEmloyees.csproj", "{C52008F3-5A13-404C-BC02-023D037B28CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryEmployees", "ClassLibraryEmloyees\ClassLibraryEmployees.csproj", "{C52008F3-5A13-404C-BC02-023D037B28CE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
