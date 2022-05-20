@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,22 +22,18 @@ namespace PersonalUchet
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {   ObservableCollection<Transfer> listOfEmployees;
+    {   
+
+        ApplicationContex db;
         
         public MainWindow()
         {
             InitializeComponent();
-            listOfEmployees = new ObservableCollection<Transfer>();
 
-            Transfer rabochiy = new Transfer();
-            rabochiy.FIO = "Иванов Иван Иванович";
-            rabochiy.BirthDate = "03.12.2000";
-            rabochiy.Sex = "Мужчина";
-            listOfEmployees.Add(rabochiy);
-            
-            listBoxEmployees.ItemsSource = listOfEmployees;
+            db = new ApplicationContex();
+            db.Transfers.Load();
 
-            
+            listViewEmployees.ItemsSource = db.Transfers.Local.ToBindingList();
 
 
         }
@@ -46,15 +43,26 @@ namespace PersonalUchet
             AddNewEmployeeWindow addNewEmployeeWindow = new AddNewEmployeeWindow();
             if (addNewEmployeeWindow.ShowDialog().Value)
             {
-                listOfEmployees.Add(addNewEmployeeWindow.getNewEmployee());
+                db.Transfers.Add(addNewEmployeeWindow.getNewEmployee());
 
             }
-            
 
+            //resize columns as max element's width
+            foreach (GridViewColumn c in gridViewMain.Columns)
+            {
+                if (double.IsNaN(c.Width))
+                {
+                    c.Width = c.ActualWidth;
+                }
+                c.Width = double.NaN;
+            }
         }
 
- 
-
- 
+        private void btnDeleteSelectedEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            
+            
+            
+        }
     }
 }

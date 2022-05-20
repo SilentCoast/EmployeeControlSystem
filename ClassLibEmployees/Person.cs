@@ -15,7 +15,7 @@ namespace ClassLibEmployees
         private string birthDate;
         private int id;
 
-        public int Id
+        public int ID
         {
             get => id; set
             {

@@ -11,10 +11,11 @@ namespace ClassLibEmployees
     /// </summary>
     public class Transfer
     {
+        public int ID { get; set; }
         public string FIO { get; set; }
         public string Sex { get; set; }
         public string BirthDate { get; set; }
+        public string Title { get; set; }
         public string UnicProperty { get; set; }
-        public string PositionInCompany { get; set; }
     }
 }

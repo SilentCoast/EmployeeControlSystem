@@ -5,17 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalUchet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="850" FontSize="20">
+        Title="MainWindow" MinHeight="389" MinWidth="605" FontSize="20">
 
-    <Window.Resources>
-        
-    </Window.Resources>
-    
     <Grid>
 
-        
-
-            <Grid.ColumnDefinitions>
+        <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -23,36 +17,26 @@
             <RowDefinition Height="0.3*" ></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ListBox x:Name="listBoxEmployees" Grid.Row="0">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    
-                    <Grid MinHeight="50">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path=FIO}" Grid.Column="0"></TextBlock>
-                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= Sex}" Grid.Column="1"></TextBlock>
-                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= BirthDate}" Grid.Column="2"></TextBlock>
-                        <TextBlock MinWidth="80"  Grid.Column="3" Text="{Binding StringFormat='{}{0}      ', Path= PositionInCompany}"></TextBlock>
-                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" Grid.Column="4"></TextBlock>
-                        
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            
-            
-        </ListBox>
-        
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
-            <Button x:Name="btnAddNewEmployee" Content="Добавить" Padding="10" Click="btnAddNewEmployee_Click"/>
-            <Button Margin="30,0,0,0" Padding="10">Удалить</Button>
-            
+        <ListView x:Name="listViewEmployees" Grid.Row="0" >
+
+            <ListView.View>
+                <GridView x:Name="gridViewMain">
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= ID}"           >ID</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= FIO}"          >FIO</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Sex</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >BirthDate</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Title</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >UnicProperty</GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+            <Button Margin="30,0,0,0" Padding="10">Редактировать</Button>
+            <Button x:Name="btnDeleteSelectedEmployees" Margin="30,0,0,0" Padding="10" Click="btnDeleteSelectedEmployees_Click">Удалить</Button>
+
         </StackPanel>
-        
+        <Button Margin="0,0,30,0" Grid.Row="1" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnAddNewEmployee" Content="Добавить" Click="btnAddNewEmployee_Click"/>
+
     </Grid>
 </Window>

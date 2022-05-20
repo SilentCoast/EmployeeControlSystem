@@ -33,7 +33,7 @@
             <RadioButton x:Name="radioButtonWoman"  GroupName="sex" >Женщина</RadioButton>
         </StackPanel>
         <TextBox x:Name="txtBirthDate" Grid.Column="2" Grid.Row="2" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
-        <ComboBox Name="comboBoxPositionInCompany" Grid.Column="3" Grid.Row="3" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="comboBoxPositionInCompany_SelectionChanged">
+        <ComboBox Name="comboBoxTitle" Grid.Column="3" Grid.Row="3" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="comboBoxPositionInCompany_SelectionChanged">
             
         </ComboBox>
         <TextBox Name="txtUnicProperty" Grid.Column="2" Grid.Row="4" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"/>

@@ -26,7 +26,7 @@ namespace PersonalUchet
         {
             InitializeComponent();
             ShowingAdditionalProperty(false);
-            comboBoxPositionInCompany.ItemsSource=new List<string>() { "Директор","Руководитель подразделения","Контроллёр","Рабочий"};
+            comboBoxTitle.ItemsSource=new List<string>() { "Директор","Руководитель подразделения","Контроллёр","Рабочий"};
             
         }
 
@@ -82,7 +82,9 @@ namespace PersonalUchet
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
             transfer.FIO = txtFIO.Text;
+
             transfer.BirthDate = txtBirthDate.Text;
+
             if(radioButtonMan.IsChecked == true)
             {
                 transfer.Sex = "Мужчина";
@@ -91,9 +93,12 @@ namespace PersonalUchet
             {
                 transfer.Sex = "Женщина";
             }
+
             transfer.UnicProperty = lblUnicProperty.Content +" : "+ txtUnicProperty.Text;
 
-            transfer.PositionInCompany = comboBoxPositionInCompany.Text;
+            transfer.Title = comboBoxTitle.Text;
+            transfer.ID = 1;
+
             DialogResult = true;
             
             Close();
