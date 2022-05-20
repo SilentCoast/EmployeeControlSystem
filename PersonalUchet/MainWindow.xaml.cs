@@ -21,21 +21,20 @@ namespace PersonalUchet
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {   ObservableCollection<Person> list;
+    {   ObservableCollection<Transfer> listOfEmployees;
         public MainWindow()
         {
             InitializeComponent();
-            list = new ObservableCollection<Person>();
-            Rabochiy rabochiy = new Rabochiy();
-            rabochiy.FIO = "sdf";
-            rabochiy.BirthDate = "dsf";
-            rabochiy.Sex = "m";
-            rabochiy.FIOofHeadofDivision = "sPE";
-            list.Add(rabochiy);
-            list.Add(rabochiy);
-            listBoxEmployees.ItemsSource = list;
+            listOfEmployees = new ObservableCollection<Transfer>();
+            Transfer rabochiy = new Transfer();
+            rabochiy.FIO = "Иванов Иван Иванович";
+            rabochiy.BirthDate = "03.12.2000";
+            rabochiy.Sex = "Мужчина";
+            listOfEmployees.Add(rabochiy);
+            
+            listBoxEmployees.ItemsSource = listOfEmployees;
 
-
+            
 
 
         }
@@ -46,18 +45,16 @@ namespace PersonalUchet
             if (!addNewEmployeeWindow.ShowDialog().Value)
             {
                 
-                MessageBox.Show(addNewEmployeeWindow.getNewEmployee().ToString());
-                list.Add(addNewEmployeeWindow.getNewEmployee());
+                
+                listOfEmployees.Add(addNewEmployeeWindow.getNewEmployee());
 
             }
             
 
         }
 
-        private void btnEditEmployee_Click(object sender, RoutedEventArgs e)
-        {
-            Button button = (Button)sender;
-            
-        }
+ 
+
+ 
     }
 }

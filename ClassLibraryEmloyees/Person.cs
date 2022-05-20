@@ -8,11 +8,21 @@ using System.Threading.Tasks;
 
 namespace ClassLibraryEmployees
 {
-    public class Person:INotifyPropertyChanged
+    public class Person : INotifyPropertyChanged
     {
         private string fIO;
         private string sex;
         private string birthDate;
+        private int id;
+
+        public int Id
+        {
+            get => id; set
+            {
+                id = value;
+                OnPropertyChanged("Id");
+            }
+        }
 
         public string FIO
         {

@@ -20,7 +20,7 @@ namespace PersonalUchet
     /// </summary>
     public partial class AddNewEmployeeWindow : Window
     {
-        public List<Person> employees = new List<Person>();
+        Transfer transfer = new Transfer();
         
         public AddNewEmployeeWindow()
         {
@@ -81,22 +81,26 @@ namespace PersonalUchet
 
         private void btnAddEmployee_Click(object sender, RoutedEventArgs e)
         {
-            switch (comboBoxPositionInCompany.Text)
+            transfer.FIO = txtFIO.Text;
+            transfer.BirthDate = txtBirthDate.Text;
+            if(radioButtonMan.IsChecked == true)
             {
-                case "Директор":
-                    Director director = new Director();
-                    director.FIO = txtFIO.Text;
-                    director.BirthDate = txtBirthDate.Text;
-                    employees.Add(director); 
-                    
-                    break;
-                    
+                transfer.Sex = "Мужчина";
             }
+            else if(radioButtonWoman.IsChecked == true)
+            {
+                transfer.Sex = "Женщина";
+            }
+            transfer.UnicProperty = lblUnicProperty.Content +" : "+ txtUnicProperty.Text;
+
+            transfer.PositionInCompany = comboBoxPositionInCompany.Text;
+            
+            
             Close();
         }
-        public Person getNewEmployee()
+        public Transfer getNewEmployee()
         {
-            return employees[0];
+            return transfer;
         }
     }
 }

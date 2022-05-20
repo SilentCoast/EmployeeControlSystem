@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalUchet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="850">
+        Title="MainWindow" Height="450" Width="850" FontSize="20">
 
     <Window.Resources>
         
@@ -24,36 +24,27 @@
         </Grid.RowDefinitions>
 
         <ListBox x:Name="listBoxEmployees" Grid.Row="0">
-            <ListBox.ItemContainerStyle>
-                <Style >
-                    <Setter Property="ListBoxItem.Margin"  Value="5"/>
-                    <Setter Property="ListBoxItem.Padding" Value="5"/>
-                    <Setter Property="ListBoxItem.Background" Value="LightSteelBlue"/>
-                    <Setter Property="ListBoxItem.Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                <Border x:Name="brd" >
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                            <ColumnDefinition></ColumnDefinition>
-                                        </Grid.ColumnDefinitions>
-                                        <TextBlock Text="{Binding Path=FIO}" Grid.Column="0"></TextBlock>
-                                        <TextBlock Text="{Binding Sex}" Grid.Column="1"></TextBlock>
-                                        <TextBlock Text="{Binding BirthDate}" Grid.Column="2"></TextBlock>
-                                        <TextBlock  Grid.Column="3">UnicProperty</TextBlock>
-                                        <Button x:Name="btnEditEmployee"  Grid.Column="4" Click="btnEditEmployee_Click">Редактировать</Button>
-                                    </Grid>
-                                </Border>
-                                
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListBox.ItemContainerStyle>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    
+                    <Grid MinHeight="50">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path=FIO}" Grid.Column="0"></TextBlock>
+                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= Sex}" Grid.Column="1"></TextBlock>
+                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= BirthDate}" Grid.Column="2"></TextBlock>
+                        <TextBlock MinWidth="80"  Grid.Column="3" Text="{Binding StringFormat='{}{0}      ', Path= PositionInCompany}"></TextBlock>
+                        <TextBlock MinWidth="80" Text="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" Grid.Column="4"></TextBlock>
+                        
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            
             
         </ListBox>
         
