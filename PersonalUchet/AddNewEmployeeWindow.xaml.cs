@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using ClassLibraryEmployees;
+using ClassLibEmployees;
 
 namespace PersonalUchet
 {
@@ -94,7 +94,7 @@ namespace PersonalUchet
             transfer.UnicProperty = lblUnicProperty.Content +" : "+ txtUnicProperty.Text;
 
             transfer.PositionInCompany = comboBoxPositionInCompany.Text;
-            
+            DialogResult = true;
             
             Close();
         }

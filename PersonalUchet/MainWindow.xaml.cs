@@ -13,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ClassLibraryEmployees;
+using ClassLibEmployees;
 
 namespace PersonalUchet
 {
@@ -22,10 +22,12 @@ namespace PersonalUchet
     /// </summary>
     public partial class MainWindow : Window
     {   ObservableCollection<Transfer> listOfEmployees;
+        
         public MainWindow()
         {
             InitializeComponent();
             listOfEmployees = new ObservableCollection<Transfer>();
+
             Transfer rabochiy = new Transfer();
             rabochiy.FIO = "Иванов Иван Иванович";
             rabochiy.BirthDate = "03.12.2000";
@@ -42,10 +44,8 @@ namespace PersonalUchet
         private void btnAddNewEmployee_Click(object sender, RoutedEventArgs e)
         {
             AddNewEmployeeWindow addNewEmployeeWindow = new AddNewEmployeeWindow();
-            if (!addNewEmployeeWindow.ShowDialog().Value)
+            if (addNewEmployeeWindow.ShowDialog().Value)
             {
-                
-                
                 listOfEmployees.Add(addNewEmployeeWindow.getNewEmployee());
 
             }
