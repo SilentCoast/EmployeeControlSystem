@@ -19,24 +19,27 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         
         <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="0">ФИО</Label>
         <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="1">Пол</Label>
         <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="2">Дата рождения</Label>
-        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3">Должность</Label>
-        <Label Name="lblUnicProperty" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4"></Label>
-        <TextBox x:Name="txtFIO" Grid.Column="2" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="4">Должность</Label>
+        <Label Content="Доп. информация"  Name="lblUnicProperty" HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="5"></Label>
+        <TextBox Text="{Binding FIO}" x:Name="txtFIO" Grid.Column="2" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
         <StackPanel Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" >
 
             <RadioButton x:Name="radioButtonMan" GroupName="sex"  Content="Мужчина" ></RadioButton>
             <RadioButton x:Name="radioButtonWoman"  GroupName="sex" >Женщина</RadioButton>
         </StackPanel>
-        <TextBox x:Name="txtBirthDate" Grid.Column="2" Grid.Row="2" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
-        <ComboBox Name="comboBoxTitle" Grid.Column="3" Grid.Row="3" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center" SelectionChanged="comboBoxPositionInCompany_SelectionChanged">
-            
-        </ComboBox>
-        <TextBox Name="txtUnicProperty" Grid.Column="2" Grid.Row="4" MinHeight="10" MinWidth="300"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
-        <Button x:Name="btnAddEmployee" Grid.Column="0"  Grid.Row="5" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="btnAddEmployee_Click"  >Добавить сотрудника</Button>
+        
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3">ID</Label>
+        <TextBox IsEnabled="False" Text="{Binding ID}" x:Name="txtID" Grid.Column="2" Grid.Row="3" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+
+        <TextBox Text="{Binding BirthDate}" x:Name="txtBirthDate" Grid.Column="2" Grid.Row="2" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <ComboBox Text="{Binding Title}" Name="comboBoxTitle" Grid.Column="3" Grid.Row="4" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox TextWrapping="Wrap" Text="{Binding UnicProperty}" Name="txtUnicProperty" Grid.Column="2" Grid.Row="5"  MinWidth="300" MaxWidth="300"  HorizontalAlignment="Left" />
+        <Button x:Name="btnAddEmployee" Grid.Column="0"  Grid.Row="6" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="10" Click="btnAddEmployee_Click"  >Добавить сотрудника</Button>
     </Grid>
 </Window>

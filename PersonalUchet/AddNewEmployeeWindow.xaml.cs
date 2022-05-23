@@ -20,62 +20,30 @@ namespace PersonalUchet
     /// </summary>
     public partial class AddNewEmployeeWindow : Window
     {
-        Transfer transfer = new Transfer();
+        private Transfer transfer;
         
-        public AddNewEmployeeWindow()
+        public AddNewEmployeeWindow(Transfer transfer)
         {
             InitializeComponent();
-            ShowingAdditionalProperty(false);
+            this.transfer = transfer;
+            if (transfer.Sex != null)
+            {
+                if (transfer.Sex.Equals("Мужчина"))
+                {
+                    radioButtonMan.IsChecked = true;
+                }
+                else if (transfer.Sex.Equals("Женщина"))
+                {
+                    radioButtonWoman.IsChecked = true;
+                }
+            }
+            DataContext = transfer;
+      
             comboBoxTitle.ItemsSource=new List<string>() { "Директор","Руководитель подразделения","Контроллёр","Рабочий"};
             
         }
 
-        private void comboBoxPositionInCompany_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            ComboBox comboBox = (ComboBox)sender;
-            //Если выбран руководитель или рабочий показываем доп поля
-            switch (comboBox.SelectedIndex)
-            {
-                //case director
-                case 0:
-                    ShowingAdditionalProperty(false);
-                    break;
-                //case rukovoditel
-                case 1:
-                    ShowingAdditionalProperty(true);
-                    lblUnicProperty.Content = "Название подразделения";
-                    break;
-                // case controller
-                case 2:
-                    ShowingAdditionalProperty(false);
-                    break;
-                //case rabochiy
-                case 3:
-                    ShowingAdditionalProperty(true);
-                    lblUnicProperty.Content = "Имя руководителя";
-                    break;
-                
-                
-            }
-            
-        }
-        /// <summary>
-        /// Задаёт Visibility полей для доп информации о работнике
-        /// </summary>
-        /// <param name="answer"></param>
-        private void ShowingAdditionalProperty(bool answer)
-        {
-            if (answer)
-            {
-                txtUnicProperty.Visibility = Visibility.Visible;
-                lblUnicProperty.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                txtUnicProperty.Visibility = Visibility.Hidden;
-                lblUnicProperty.Visibility = Visibility.Hidden;
-            }
-        }
+        
 
  
 
@@ -85,7 +53,13 @@ namespace PersonalUchet
 
             transfer.BirthDate = txtBirthDate.Text;
 
-            if(radioButtonMan.IsChecked == true)
+
+            transfer.UnicProperty =  txtUnicProperty.Text;
+
+            transfer.Title = comboBoxTitle.Text;
+            
+
+            if (radioButtonMan.IsChecked == true)
             {
                 transfer.Sex = "Мужчина";
             }
@@ -94,10 +68,6 @@ namespace PersonalUchet
                 transfer.Sex = "Женщина";
             }
 
-            transfer.UnicProperty = lblUnicProperty.Content +" : "+ txtUnicProperty.Text;
-
-            transfer.Title = comboBoxTitle.Text;
-            transfer.ID = 1;
 
             DialogResult = true;
             

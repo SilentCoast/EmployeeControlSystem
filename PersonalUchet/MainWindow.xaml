@@ -16,23 +16,26 @@
             <RowDefinition Height="1*"></RowDefinition>
             <RowDefinition Height="0.3*" ></RowDefinition>
         </Grid.RowDefinitions>
-
-        <ListView x:Name="listViewEmployees" Grid.Row="0" >
+        
+            <ListView x:Name="listViewEmployees" Grid.Row="0" >
 
             <ListView.View>
                 <GridView x:Name="gridViewMain">
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= ID}"           >ID</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= FIO}"          >FIO</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Sex</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >BirthDate</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Title</GridViewColumn>
-                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >UnicProperty</GridViewColumn>
-                </GridView>
+                
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= ID}"           >ID</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= FIO}"          >ФИО</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Пол</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >Дата рождения</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Должность</GridViewColumn>
+                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >Доп. информация</GridViewColumn>
+                
+                 </GridView>
             </ListView.View>
         </ListView>
+        
 
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
-            <Button Margin="30,0,0,0" Padding="10">Редактировать</Button>
+            <Button x:Name="btnEditSelectedEmployee" Margin="30,0,0,0" Padding="10" Click="btnEditSelectedEmployee_Click">Редактировать</Button>
             <Button x:Name="btnDeleteSelectedEmployees" Margin="30,0,0,0" Padding="10" Click="btnDeleteSelectedEmployees_Click">Удалить</Button>
 
         </StackPanel>
