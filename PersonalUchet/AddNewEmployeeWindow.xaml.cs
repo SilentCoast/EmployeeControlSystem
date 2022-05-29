@@ -40,7 +40,7 @@ namespace PersonalUchet
             DataContext = transfer;
       
             comboBoxTitle.ItemsSource=new List<string>() { "Директор","Руководитель подразделения","Контроллёр","Рабочий"};
-            
+            comboBoxDivision.ItemsSource = new List<string>() { "Петрово", "Лужайкино" };
         }
 
         
@@ -57,7 +57,8 @@ namespace PersonalUchet
             transfer.UnicProperty =  txtUnicProperty.Text;
 
             transfer.Title = comboBoxTitle.Text;
-            
+
+            transfer.Division = comboBoxDivision.Text;
 
             if (radioButtonMan.IsChecked == true)
             {

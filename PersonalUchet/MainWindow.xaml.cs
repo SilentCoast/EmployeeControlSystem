@@ -31,13 +31,20 @@ namespace PersonalUchet
         public MainWindow()
         {
             InitializeComponent();
+
+            //колекция для передачи в listView
             filters = new ObservableCollection<Transfer>();
+
+            //чтобы программа видела базу данных(поднимаемся из Debug в PersonalUchet)
             Directory.SetCurrentDirectory(@"..\..\");
+            
             db = new ApplicationContex();
             db.Transfers.Load();
-            //listViewEmployees.ItemsSource = db.Transfers.Local;
+
             listViewEmployees.ItemsSource = filters;
+
             comboBoxFilters.ItemsSource = new List<string>() { "Все","Директор", "Руководитель подразделения", "Контроллёр", "Рабочий" };
+            //по умолчанию все
             comboBoxFilters.SelectedIndex = 0;
 
 
@@ -79,7 +86,8 @@ namespace PersonalUchet
                 Sex = transfer.Sex,
                 Title = transfer.Title,
                 UnicProperty = transfer.UnicProperty,
-                ID = transfer.ID
+                ID = transfer.ID,
+                Division = transfer.Division
             });
             addNewEmployeeWindow.btnAddEmployee.Content = "Редактировать сотрудника";
             if (addNewEmployeeWindow.ShowDialog().Value)
@@ -93,7 +101,7 @@ namespace PersonalUchet
                     transfer.Title = addNewEmployeeWindow.getNewEmployee().Title;
                     transfer.UnicProperty = addNewEmployeeWindow.getNewEmployee().UnicProperty;
                     transfer.ID = addNewEmployeeWindow.getNewEmployee().ID;
-
+                    transfer.Division = addNewEmployeeWindow.getNewEmployee().Division;
                     db.Entry(transfer).State = EntityState.Modified;
                     db.SaveChanges();
                 }

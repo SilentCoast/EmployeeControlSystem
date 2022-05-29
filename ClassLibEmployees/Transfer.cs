@@ -19,6 +19,7 @@ namespace ClassLibEmployees
         private string birthDate;
         private string title;
         private string unicProperty;
+        private string division;
 
         public int ID
         {
@@ -60,6 +61,14 @@ namespace ClassLibEmployees
                 OnPropertyChanged();
             }
         }
+        public string Division
+        {
+            get => division; set
+            {
+                division = value;
+                OnPropertyChanged();
+            }
+        }
         public string UnicProperty
         {
             get => unicProperty; set
@@ -68,6 +77,7 @@ namespace ClassLibEmployees
                 OnPropertyChanged();
             }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")

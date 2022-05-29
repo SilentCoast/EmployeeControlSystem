@@ -27,7 +27,8 @@
                         <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Пол</GridViewColumn>
                         <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >Дата рождения</GridViewColumn>
                         <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Должность</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >Доп. информация</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Division}" >Подразделение</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >Доп. информация</GridViewColumn>
                 
                  </GridView>
             </ListView.View>

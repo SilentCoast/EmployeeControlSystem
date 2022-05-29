@@ -34,8 +34,8 @@
             <RadioButton x:Name="radioButtonWoman"  GroupName="sex" >Женщина</RadioButton>
         </StackPanel>
         
-        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3">ID</Label>
-        <TextBox IsEnabled="False" Text="{Binding ID}" x:Name="txtID" Grid.Column="2" Grid.Row="3" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
+        <Label HorizontalAlignment="Right" VerticalAlignment="Center" Grid.Row="3">Подразделение</Label>
+        <ComboBox Text="{Binding Division}" x:Name="comboBoxDivision" Grid.Column="2" Grid.Row="3" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></ComboBox>
 
         <TextBox Text="{Binding BirthDate}" x:Name="txtBirthDate" Grid.Column="2" Grid.Row="2" MinHeight="10" MinWidth="150"  HorizontalAlignment="Left" VerticalAlignment="Center"></TextBox>
         <ComboBox Text="{Binding Title}" Name="comboBoxTitle" Grid.Column="3" Grid.Row="4" MinHeight="10" MinWidth="200"  HorizontalAlignment="Left" VerticalAlignment="Center"/>
