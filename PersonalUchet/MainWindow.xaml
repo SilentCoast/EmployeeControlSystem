@@ -37,7 +37,7 @@
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
             <Button x:Name="btnEditSelectedEmployee" Margin="30,0,0,0" Padding="10" Click="btnEditSelectedEmployee_Click">Редактировать</Button>
             <Button x:Name="btnDeleteSelectedEmployees" Margin="30,0,0,0" Padding="10" Click="btnDeleteSelectedEmployees_Click">Удалить</Button>
-
+            <ComboBox Padding="10" Name="comboBoxFilters" Margin="30,0,0,0" SelectionChanged="comboBoxFilters_SelectionChanged"></ComboBox>
         </StackPanel>
         <Button Margin="0,0,30,0" Grid.Row="1" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnAddNewEmployee" Content="Добавить" Click="btnAddNewEmployee_Click"/>
 

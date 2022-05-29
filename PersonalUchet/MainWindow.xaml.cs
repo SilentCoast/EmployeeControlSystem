@@ -26,14 +26,19 @@ namespace PersonalUchet
     {   
 
         ApplicationContex db;
+        ObservableCollection<Transfer> filters;
         
         public MainWindow()
         {
             InitializeComponent();
+            filters = new ObservableCollection<Transfer>();
             Directory.SetCurrentDirectory(@"..\..\");
             db = new ApplicationContex();
             db.Transfers.Load();
-            listViewEmployees.ItemsSource = db.Transfers.Local;
+            //listViewEmployees.ItemsSource = db.Transfers.Local;
+            listViewEmployees.ItemsSource = filters;
+            comboBoxFilters.ItemsSource = new List<string>() { "Все","Директор", "Руководитель подразделения", "Контроллёр", "Рабочий" };
+            comboBoxFilters.SelectedIndex = 0;
 
 
         }
@@ -43,7 +48,10 @@ namespace PersonalUchet
             AddNewEmployeeWindow addNewEmployeeWindow = new AddNewEmployeeWindow(new Transfer());
             if (addNewEmployeeWindow.ShowDialog().Value)
             {
+
                 db.Transfers.Add(addNewEmployeeWindow.getNewEmployee());
+                filters.Add(addNewEmployeeWindow.getNewEmployee());
+                
                 db.SaveChanges();
             }
             ResizeColumns();
@@ -54,6 +62,7 @@ namespace PersonalUchet
             if (listViewEmployees.SelectedItem == null) return;
             Transfer transfer = listViewEmployees.SelectedItem as Transfer;
             db.Transfers.Remove(transfer);
+            filters.Remove(transfer);
             db.SaveChanges();
             ResizeColumns();
         }
@@ -106,6 +115,78 @@ namespace PersonalUchet
                 }
                 c.Width = double.NaN;
             }
+        }
+
+        private void comboBoxFilters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            filters.Clear();
+            switch(comboBoxFilters.SelectedIndex) 
+            {
+                //все (нет фильтра)
+                case 0:
+                    foreach(Transfer i in db.Transfers)
+                    { 
+                        Transfer transfer = i;
+                        filters.Add(transfer);
+                    }
+                    
+                    break;
+                    
+                case 1:
+                    foreach (Transfer i in db.Transfers)
+                    {
+                        Transfer transfer = i;
+                        if (transfer.Title != null)
+                        { 
+                            if (transfer.Title == "Директор") 
+                            { 
+                                filters.Add(transfer);
+                            } 
+                        }
+                    }
+                    break;
+
+                case 2:
+                    foreach (Transfer i in db.Transfers)
+                    {
+                        Transfer transfer = i;
+                        if (transfer.Title != null)
+                        {
+                            if (transfer.Title == "Руководитель подразделения")
+                            {
+                                filters.Add(transfer);
+                            }
+                        }
+                    }
+                    break;
+                case 3:
+                    foreach (Transfer i in db.Transfers)
+                    {
+                        Transfer transfer = i;
+                        if (transfer.Title != null)
+                        {
+                            if (transfer.Title == "Контроллёр")
+                            {
+                                filters.Add(transfer);
+                            }
+                        }
+                    }
+                    break;
+                case 4:
+                    foreach (Transfer i in db.Transfers)
+                    {
+                        Transfer transfer = i;
+                        if (transfer.Title != null)
+                        {
+                            if (transfer.Title == "Рабочий")
+                            {
+                                filters.Add(transfer);
+                            }
+                        }
+                    }
+                    break;
+            }
+            ResizeColumns();
         }
     }
 }
