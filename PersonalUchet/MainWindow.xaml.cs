@@ -40,11 +40,14 @@ namespace PersonalUchet
             
             db = new ApplicationContex();
             db.Transfers.Load();
-        
+            foreach(Transfer transfer in db.Transfers)
+            {
+                filters.Add(transfer);
+            }
             listViewEmployees.ItemsSource = filters;
 
-            comboBoxTitleFilters.ItemsSource = new List<string>() { "Все","Директор", "Руководитель подразделения", "Контроллёр", "Рабочий" };
-            //по умолчанию "все", прописываем здесь чтобы тригернуть SelectionChanged и прогрузить данные в listView
+            comboBoxTitleFilters.ItemsSource = new List<string>() { "Должности","Директор", "Руководитель подразделения", "Контроллёр", "Рабочий" };
+            //по умолчанию без фильтров
             comboBoxTitleFilters.SelectedIndex = 0;
 
             comboBoxDivisionFilters.ItemsSource = new List<string>() { "Подразделения", "Петрово","Лужайкино"};
@@ -61,6 +64,8 @@ namespace PersonalUchet
                 db.Transfers.Add(addNewEmployeeWindow.getNewEmployee());
                 filters.Add(addNewEmployeeWindow.getNewEmployee());
                 //TODO: when adding new employee, it displays in the listView whether or not filters was set
+              
+                
                 db.SaveChanges();
             }
             ResizeColumns();
@@ -127,138 +132,24 @@ namespace PersonalUchet
             }
         }
 
-        private void comboBoxFilters_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
-            switch(comboBoxTitleFilters.SelectedIndex) 
-            {
-                //все (нет фильтра)
-                case 0:
-                    foreach(Transfer i in db.Transfers)
-                    {
-                        if (!filters.Contains(i))
-                        {
-                            filters.Add(i);
-                        }
-                        
-                    }
-                    
-                    break;
-                    
-                case 1:
-                    foreach (Transfer i in db.Transfers)
-                    {
-                        if (i.Title != null)
-                        { 
-                            if (i.Title == "Директор") 
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            } 
-                        }
-                        filters.Remove(i);
-                    }
-                    break;
+       
 
-                case 2:
-                    foreach (Transfer i in db.Transfers)
-                    {
-                        if (i.Title != null)
-                        {
-                            if (i.Title == "Руководитель подразделения")
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            }
-                        }
-                        filters.Remove(i);
-                    }
-                    break;
-                case 3:
-                    foreach (Transfer i in db.Transfers)
-                    {
-                        if (i.Title != null)
-                        {
-                            if (i.Title == "Контроллёр")
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            }
-                        }
-                        filters.Remove(i);
-                    }
-                    break;
-                case 4:
-                    foreach (Transfer i in db.Transfers)
-                    {
-                        if (i.Title != null)
-                        {
-                            if (i.Title == "Рабочий")
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            }
-                        }
-                        filters.Remove(i);
-                    }
-                    break;
-            }
-            ResizeColumns();
-        }
-
-        private void comboBoxDivisionFilters_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void btnApplyFilters_Click(object sender, RoutedEventArgs e)
         {
-            foreach(Transfer i in db.Transfers)
+            foreach (Transfer transfer in db.Transfers)
             {
-                switch (comboBoxDivisionFilters.SelectedIndex)
+                if (transfer.Division == comboBoxDivisionFilters.Text || comboBoxDivisionFilters.Text == "Подразделения")
                 {
-                    case 0:
-                        if (!filters.Contains(i))
+                    if (transfer.Title == comboBoxTitleFilters.Text || comboBoxTitleFilters.Text == "Должности")
+                    {
+                        if (!filters.Contains(transfer))
                         {
-                            filters.Add(i);
+                            filters.Add(transfer);
                         }
                         continue;
-                        
-                    case 1:
-                        if (i.Division != null)
-                        {
-                            if(i.Division == "Петрово")
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            }
-                        }
-                        break;
-                    case 2:
-                        if (i.Division != null)
-                        {
-                            if (i.Division == "Лужайкино")
-                            {
-                                if (!filters.Contains(i))
-                                {
-                                    filters.Add(i);
-                                }
-                                continue;
-                            }
-                        }
-                        break;
+                    }
                 }
-                filters.Remove(i);
+                filters.Remove(transfer);
             }
         }
     }

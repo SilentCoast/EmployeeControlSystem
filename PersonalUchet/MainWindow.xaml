@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalUchet"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="389" MinWidth="605" FontSize="20">
+        Title="MainWindow" MinHeight="389" MinWidth="705" FontSize="20">
 
     <Grid>
 
@@ -13,35 +13,35 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*" ></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="0.3*" ></RowDefinition>
+            <RowDefinition Height="0.2*" ></RowDefinition>
         </Grid.RowDefinitions>
-        
-            <ListView x:Name="listViewEmployees" Grid.Row="0" >
 
+        <ListView SelectionMode="Single" x:Name="listViewEmployees" Grid.Row="1" >
             <ListView.View>
                 <GridView x:Name="gridViewMain">
-                
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= ID}"           >ID</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= FIO}"          >ФИО</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Пол</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >Дата рождения</GridViewColumn>
-                        <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Должность</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= ID}"           >ID</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= FIO}"          >ФИО</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Sex}"          >Пол</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= BirthDate}"    >Дата рождения</GridViewColumn>
+                    <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Title}"        >Должность</GridViewColumn>
                     <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= Division}" >Подразделение</GridViewColumn>
                     <GridViewColumn  DisplayMemberBinding="{Binding StringFormat='{}{0}      ',Path= UnicProperty}" >Доп. информация</GridViewColumn>
-                
-                 </GridView>
+                </GridView>
             </ListView.View>
         </ListView>
         
 
-        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="1" Orientation="Horizontal">
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="2" Orientation="Horizontal">
             <Button x:Name="btnEditSelectedEmployee" Margin="30,0,0,0" Padding="10" Click="btnEditSelectedEmployee_Click">Редактировать</Button>
             <Button x:Name="btnDeleteSelectedEmployees" Margin="30,0,0,0" Padding="10" Click="btnDeleteSelectedEmployees_Click">Удалить</Button>
-            <ComboBox Padding="10" Name="comboBoxTitleFilters" Margin="30,0,0,0" SelectionChanged="comboBoxFilters_SelectionChanged"></ComboBox>
-            <ComboBox Padding="10" Name="comboBoxDivisionFilters" Margin="30,0,0,0" SelectionChanged="comboBoxDivisionFilters_SelectionChanged" ></ComboBox>
+            </StackPanel>
+        <Button Margin="0,0,30,0" Grid.Row="2" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnAddNewEmployee" Content="Добавить" Click="btnAddNewEmployee_Click"/>
+        <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
+            <ComboBox Padding="10" Name="comboBoxTitleFilters" Margin="30,0,0,0" ></ComboBox>
+            <ComboBox Padding="10" Name="comboBoxDivisionFilters" Margin="30,0,0,0"  ></ComboBox>
+            <Button Padding="10" Name="btnApplyFilters" Margin="30,0,0,0" Click="btnApplyFilters_Click"  >Применить фильтры</Button>
         </StackPanel>
-        <Button Margin="0,0,30,0" Grid.Row="1" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnAddNewEmployee" Content="Добавить" Click="btnAddNewEmployee_Click"/>
-
     </Grid>
 </Window>
