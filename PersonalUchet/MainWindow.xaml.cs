@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data.Entity;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using ClassLibEmployees;
 
 namespace PersonalUchet
@@ -37,22 +26,22 @@ namespace PersonalUchet
 
             //чтобы программа видела базу данных(поднимаемся из Debug в PersonalUchet)
             Directory.SetCurrentDirectory(@"..\..\");
-            
+            //initialize database
             db = new ApplicationContex();
             db.Transfers.Load();
-            foreach(Transfer transfer in db.Transfers)
-            {
-                filters.Add(transfer);
-            }
+
             listViewEmployees.ItemsSource = filters;
 
+            //Фильтры
             comboBoxTitleFilters.ItemsSource = new List<string>() { "Должности","Директор", "Руководитель подразделения", "Контроллёр", "Рабочий" };
-            //по умолчанию без фильтров
-            comboBoxTitleFilters.SelectedIndex = 0;
 
             comboBoxDivisionFilters.ItemsSource = new List<string>() { "Подразделения", "Петрово","Лужайкино"};
 
+            //по умолчанию без фильтров
+            comboBoxTitleFilters.SelectedIndex = 0;
             comboBoxDivisionFilters.SelectedIndex = 0;
+            
+            doFilters();
         }
 
         private void btnAddNewEmployee_Click(object sender, RoutedEventArgs e)
@@ -63,11 +52,9 @@ namespace PersonalUchet
 
                 db.Transfers.Add(addNewEmployeeWindow.getNewEmployee());
                 filters.Add(addNewEmployeeWindow.getNewEmployee());
-                //TODO: when adding new employee, it displays in the listView whether or not filters was set
-              
-                
                 db.SaveChanges();
             }
+            doFilters();
             ResizeColumns();
         }
 
@@ -113,6 +100,7 @@ namespace PersonalUchet
                     db.SaveChanges();
                 }
             }
+            doFilters();
             ResizeColumns();
         }
 
@@ -136,6 +124,14 @@ namespace PersonalUchet
 
         private void btnApplyFilters_Click(object sender, RoutedEventArgs e)
         {
+            doFilters();
+        }
+
+        /// <summary>
+        ///обновляет listView по заданным фильтрам
+        /// </summary>
+        public void doFilters()
+        {
             foreach (Transfer transfer in db.Transfers)
             {
                 if (transfer.Division == comboBoxDivisionFilters.Text || comboBoxDivisionFilters.Text == "Подразделения")
@@ -151,6 +147,20 @@ namespace PersonalUchet
                 }
                 filters.Remove(transfer);
             }
+            if(filters.Count == 0)
+            {
+                MessageBox.Show("Поиск не дал результатов");
+                comboBoxTitleFilters.SelectedIndex = 0;
+                comboBoxDivisionFilters.SelectedIndex = 0;
+                doFilters();
+            }
+        }
+
+        private void btnOffFilters_Click(object sender, RoutedEventArgs e)
+        {
+            comboBoxTitleFilters.SelectedIndex = 0;
+            comboBoxDivisionFilters.SelectedIndex = 0;
+            doFilters();
         }
     }
 }

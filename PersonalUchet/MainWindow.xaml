@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PersonalUchet"
         mc:Ignorable="d"
-        Title="MainWindow" MinHeight="389" MinWidth="705" FontSize="20">
+        Title="Система Учёта 'Пётр Петров'" MinHeight="389" MinWidth="705" FontSize="20">
 
     <Grid>
 
@@ -38,10 +38,13 @@
             <Button x:Name="btnDeleteSelectedEmployees" Margin="30,0,0,0" Padding="10" Click="btnDeleteSelectedEmployees_Click">Удалить</Button>
             </StackPanel>
         <Button Margin="0,0,30,0" Grid.Row="2" Padding="10" HorizontalAlignment="Right" VerticalAlignment="Center" x:Name="btnAddNewEmployee" Content="Добавить" Click="btnAddNewEmployee_Click"/>
+        <Border BorderThickness="3" BorderBrush="Bisque" >
         <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Row="0" Orientation="Horizontal">
             <ComboBox Padding="10" Name="comboBoxTitleFilters" Margin="30,0,0,0" ></ComboBox>
             <ComboBox Padding="10" Name="comboBoxDivisionFilters" Margin="30,0,0,0"  ></ComboBox>
             <Button Padding="10" Name="btnApplyFilters" Margin="30,0,0,0" Click="btnApplyFilters_Click"  >Применить фильтры</Button>
+            <Button Name="btnOffFilters" BorderThickness="0" Background="Transparent" Padding="10" Margin="30,0,0,0" Click="btnOffFilters_Click" >Сбросить фильтры</Button>
         </StackPanel>
+        </Border>
     </Grid>
 </Window>
