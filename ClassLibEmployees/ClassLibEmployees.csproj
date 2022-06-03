@@ -41,12 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Employees\Controller.cs" />
-    <Compile Include="Employees\Director.cs" />
-    <Compile Include="Employees\HeadOfDivision.cs" />
-    <Compile Include="Employees\Rabochiy.cs" />
-    <Compile Include="ITitlable.cs" />
-    <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Transfer.cs" />
   </ItemGroup>

@@ -13,8 +13,6 @@ namespace ClassLibEmployees
         public ApplicationContex() : base("DefaultConnection")
         {
         }
-        public DbSet<Director> Directors { get; set; }
-        public DbSet<Controller> Controllers { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
     }
 }
